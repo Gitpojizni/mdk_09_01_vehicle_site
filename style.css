@@ -1,0 +1,29 @@
+body {
+	margin: 0px;
+
+	width: 100%;
+	min-height: 100vh;
+	height: auto;
+	background: green;
+}
+
+header {
+	width: 100%;
+	height: 75px;
+	background: pink;
+}
+
+main {
+	margin: 0px;
+
+	width: 100%;
+	min-height: 100vh;
+	height: auto;
+	background: white;
+}
+
+footer {
+	width: 100%;
+	height: 75px;
+	background: black;
+}
