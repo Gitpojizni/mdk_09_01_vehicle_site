@@ -15,8 +15,27 @@
 		$conn = mysqli_connect($host,$user,$pass,$dbname);
 	?>
 	<header>
-		<div class="block_right">
-			<h3><a href='reg.php'>Регистрация</a></h3>
+		<div class="header_button_container">
+			<a href='index.php'>
+				<button class="header_button">
+					Главная
+				</button>
+			</a>
+			<a href='reg.php'>
+				<button class="header_button">
+					Регистрация
+				</button>
+			</a>
+			<a href='auto.php'>
+				<button class="header_button">
+					Авторизация
+				</button>
+			</a>
+			<a href='profile.php'>
+				<button class="header_button">
+					Профиль
+				</button>
+			</a>
 		</div>
 	</header>
 	<main>
