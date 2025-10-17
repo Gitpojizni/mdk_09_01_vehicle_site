@@ -32,7 +32,7 @@ a {
 	border: none;
 
 	color: white;
-  font-size: 20px;
+	font-size: 20px;
 	text-shadow:
       0 0 21px #fff,
       0 0 42px #0fa,
@@ -43,7 +43,7 @@ a {
 }
 
 .header_button:hover {
-  color: lightblue;
+	color: lightblue;
 }
 
 main {
@@ -72,21 +72,9 @@ main {
 
 	color: white;
 }
-}
 
-
-.bba:hover {
-	border: 2px solid red;
-	color: red;
-	text-shadow:
-      0 0 7px red,
-      0 0 10px red,
-      0 0 21px red,
-      0 0 42px #0fa,
-      0 0 82px #0fa,
-      0 0 92px #0fa,
-      0 0 102px #0fa,
-      0 0 151px #0fa;
+.product_block:hover {
+	transform: translate(0, -20px);
 }
 
 /*registration*/
@@ -115,6 +103,17 @@ tr:hover {
 
 /*tovar*/
 
+.main_panel_tovar {
+	width: 100%;
+	min-height: 100vh;
+	height: auto;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
 .fix_dla_p {
 	color: white;
 	text-shadow:
@@ -128,6 +127,64 @@ tr:hover {
       0 0 151px #0fa;
 }
 
+.comment_section {
+	width: 70%;
+	min-height: 80vh;
+	height: auto;
+	background: white;
+	
+	border-radius: 20px;
+}
+
+.comment_view_scrollbar {
+	margin: 0px;
+	
+	width: 100%;
+	height: 75vh;
+	background: gray;
+	
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+.comment_redaction_section {
+	width: 100%;
+	height: 5vh;
+	background: white;
+	
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#comment_redact_and_send {
+	width: 100%;
+	height: 5vh;
+	
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	
+}
+
+#comment_redact {
+	width: 90%;
+	height: 4vh;
+	
+	border-bottom-left-radius: 20px;
+	border: none;
+	font-size: 20px;
+}
+
+#comment_send {
+	width: 10%;
+	height: 5vh;
+	
+	border-bottom-right-radius: 20px;
+}
 
 /*tovar*/
 footer {
