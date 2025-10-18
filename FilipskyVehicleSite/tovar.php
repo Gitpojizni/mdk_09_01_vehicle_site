@@ -43,18 +43,20 @@
 			<div class="main_panel_tovar">
 				<? 
 				$id=$_POST['id'];
-				$query="SELECT * FROM `tovar` WHERE `id` = $id ";
-				$result=mysqli_query($conn, $query);
+				$query1="SELECT * FROM `tovar` WHERE `id` = $id ";
+				$result1=mysqli_query($conn, $query1);
+				print_r($result1);
+				$row1=mysqli_fetch_array($result1);
 
 				?>
 				<center>
 					<div class="main_product">
-						<img src="img/<?echo $row[6]; ?>" alt="tovar" width=50% height=50%>
-						<p class='fix_dla_p'> <? echo $row[1]; ?></p>
-						<p class='fix_dla_p'><? echo $row[2]; ?></p>
-						<p class='fix_dla_p'><? echo $row[3]; ?></p>
-						<p class='fix_dla_p'>$<? echo $row[5]; ?></p>
-						<p class='fix_dla_p'><? echo $row[0]; ?></p>
+						<img src="img/<?echo $row1[6]; ?>" alt="tovar" width=50% height=50%>
+						<p class='fix_dla_p'><? echo $row1[1]; ?></p>
+						<p class='fix_dla_p'><? echo $row1[2]; ?></p>
+						<p class='fix_dla_p'><? echo $row1[3]; ?></p>
+						<p class='fix_dla_p'>$<? echo $row1[5]; ?></p>
+						<p class='fix_dla_p'><? echo $row1[0]; ?></p>
 					</div>
 				</center>
 				<div class="comment_section">
@@ -62,30 +64,32 @@
 						<?
 						$comment=$_POST['comment'];
 						$comment_text = $_POST['comment_text'];
+						
 						if ($_POST['send'] == 'Отправить') {
 							$query="INSERT INTO comment (`user_id`, `login`, `status`, `comment`)
 									VALUES ('228', 'logos', '227', '$comment_text')";
+							$result=mysqli_query($conn, $query);
 						}
-						$query="SELECT * FROM comment";
+						
+						$query="SELECT * FROM `comment`";
 						$result=mysqli_query($conn, $query);
-						$row=mysqli_fetch_array($result);
 						
-						?>
+						// $row=mysqli_fetch_array($result);
 						
-						<? echo count($row); ?>
-						<? echo count($row[3]); 
-												print_r($row)
-
-						?>
+						$pass = '111';
 						
-						<?
-						for ($i = 1; $i <= count($row); $i++)
+						if ($pass == '404') {
+							print("admin root bla bla bla");
+						} else {
+							print("defolt");
+						}
+						
+						while($row=mysqli_fetch_array($result))	
 						{
 						?>
 						<div class="comment_block">
-							<p> <? echo $row[1]; ?></p>
-							<p><? echo $row[2]; ?></p>
-							<p><? echo $row[3]; ?></p>
+							<p><hr class="vertical_line"><h3><?echo $row[2]; ?></h3><h4 id="admin_identificator"><? if ($row[3] == 1) {echo 'Администратор'; }?></h4></p>
+							
 							<p><? echo $row[4]; ?></p>
 							
 						</div>
@@ -98,6 +102,9 @@
 							<input id="comment_redact" type="text" name="comment_text">
 							<input id="comment_send" type="submit" name="send" value="Отправить">
 						</form>
+						<?
+							$comment_text = 'uuuuuuuuu';
+						?>
 					</div>
 				</div>
 			</div>
