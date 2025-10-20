@@ -32,6 +32,8 @@
 	</header>
 	<main>
 		<?php 
+		ini_set('display_errors', 0);
+		error_reporting(E_ALL ^ E_NOTICE);
 		if ($_POST['reg'] == 'Зарегистрироваться') {
 			$login = $_POST['login'];
 			$mail = $_POST['mail'];

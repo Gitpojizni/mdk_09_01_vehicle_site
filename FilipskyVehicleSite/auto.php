@@ -1,4 +1,6 @@
 <? session_start();
+ini_set('display_errors', 0);
+error_reporting(E_ALL ^ E_NOTICE);
 if ($_POST['out']=='Выход') {$_SESSION['login']=''; $_SESSION['pass1']=''; $_SESSION['status']='';}
 ?>
 <html>

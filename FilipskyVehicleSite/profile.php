@@ -2,7 +2,7 @@
 if ($_POST['out']=='Выход') {$_SESSION['login']=''; $_SESSION['pass1']=''; $_SESSION['status']='';}
 if ($_SESSION['status'] == '') {
 	echo "<script>alert('Вы не вошли в аккаунт');
-	location.href='http://project:8080/index.php';
+	location.href='http://filipskyvehiclesite:81/index.php';
 	</script>";
 }
 ?>
@@ -15,9 +15,6 @@ if ($_SESSION['status'] == '') {
 </head>
 <body>
 	<? 
-		ini_set('display_errors', 0);
-		error_reporting(E_ALL ^ E_NOTICE);
-
 		$host='localhost';
 		$user='root';
 		$pass='';
