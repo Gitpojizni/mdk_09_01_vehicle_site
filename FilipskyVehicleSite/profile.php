@@ -1,4 +1,6 @@
 <? session_start();
+// ini_set('display_errors', 0);
+// error_reporting(E_ALL ^ E_NOTICE);
 if ($_POST['out']=='Выход') {$_SESSION['login']=''; $_SESSION['pass1']=''; $_SESSION['status']='';}
 if ($_SESSION['status'] == '') {
 	echo "<script>alert('Вы не вошли в аккаунт');
@@ -49,8 +51,6 @@ if ($_SESSION['status'] == '') {
 	<main>
 		<div class="main_panel">
 			<? 
-				ini_set('display_errors', 0);
-				error_reporting(E_ALL ^ E_NOTICE);
 				if ($_SESSION['login']!='') {
 					$login=$_SESSION['login'];
 					$pass1=$_SESSION['pass1'];
@@ -61,6 +61,7 @@ if ($_SESSION['status'] == '') {
 						$query="UPDATE `reg` SET `img`='$img' WHERE `id`='$id'";
 						$result=mysqli_query($conn, $query);
 					}
+					
 					if ($_POST['update_user']=='Изменить контакты') {
 						$id=$_POST['id'];
 						$login2=$_POST['login2'];
@@ -70,11 +71,15 @@ if ($_SESSION['status'] == '') {
 						$last_name=$_POST['last_name'];
 						$father_name=$_POST['father_name'];
 
-						$query="UPDATE `reg` SET `login`='$login2', `mail`='$mail', `pass`='$pass2', `last_name`='last_name', `father_name`='father_name' WHERE `id`='$id'";
+						$query="UPDATE `reg` SET `login`='$login2', `mail`='$mail', `name`='$name', `password`='$pass2', `last_name`='$last_name', `father_name`='$father_name' WHERE `id`='$id'";
 						$result=mysqli_query($conn, $query);
 					}
+					
 					$query="SELECT * FROM `reg` WHERE `login`='$login' AND `password`='$pass1'";
-					$result=mysqli_fetch_array($result);
+					$result=mysqli_query($conn, $query);
+					$row=mysqli_fetch_array($result);
+
+
 			?>
 			<div class="img_tovar">
 				<form action="profile.php" method="POST">
@@ -142,7 +147,7 @@ if ($_SESSION['status'] == '') {
 				</form>
 			</div>
 			<? 
-		}
+						}
 			?>
 		</div>
 	</main>

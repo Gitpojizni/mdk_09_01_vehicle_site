@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -83,7 +82,7 @@
 			?>
 			<div class="product_block">
 				<center class="bba">
-					<img src="img/<?echo $row[6]; ?>" alt="tovar" width=20% height=80%>
+					<img src="img/<?echo $row[6]; ?>" alt="tovar" width=80% height=60%>
 					<p> <? echo $row[1]; ?></p>
 					<p>Характеристики:</p>
 					<p><? echo $row[2]; ?></p>
