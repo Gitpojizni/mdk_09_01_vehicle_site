@@ -73,6 +73,7 @@
 			$search_text=$_POST['search_text'];
 
 			if ($_POST['search'] == 'Поиск') {
+				// echo "$search_text";
 				$query="SELECT * FROM tovar WHERE name LIKE '%$search_text%' OR category LIKE '%$search_text%' OR description_less LIKE '%$search_text%' OR description_full LIKE '%$search_text%'";
 			}
 			$result=mysqli_query($conn,$query);
@@ -82,7 +83,7 @@
 			?>
 			<div class="product_block">
 				<center class="bba">
-					<img src="img/<?echo $row[6]; ?>" alt="tovar" width=80% height=60%>
+					<img src="img/<?echo $row[6]; ?>" alt="tovar" width=70% height=40%>
 					<p> <? echo $row[1]; ?></p>
 					<p>Характеристики:</p>
 					<p><? echo $row[2]; ?></p>

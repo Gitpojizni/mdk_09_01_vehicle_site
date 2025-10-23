@@ -62,12 +62,23 @@
 				<div class="comment_section">
 					<div class="comment_view_scrollbar">
 						<?
+
+						function filter($m){ 
+							if(str_contains($m, ">", "<"){
+								$m = str_replace("<", ">", $m)
+							} else {
+								echo "dddd"
+							}
+							return $m;
+						}
+
 						$comment=$_POST['comment'];
 						$comment_text = $_POST['comment_text'];
 						
 						if ($_POST['send'] == 'Отправить') {
+							filter($comment_text);
 							$query="INSERT INTO comment (`user_id`, `login`, `status`, `comment`)
-									VALUES ('228', 'logos', '227', '$comment_text')";
+									VALUES ('228', 'logos', '227', '$m')";
 							$result=mysqli_query($conn, $query);
 						}
 						
@@ -93,9 +104,9 @@
 							<p><? echo $row[4]; ?></p>
 							
 						</div>
-						<? 
+						<?
 						}
-						?>	
+						?>
 					</div>
 					<div class="comment_redaction_section">
 						<form id="comment_redact_and_send" method="post" action="tovar.php">
@@ -103,7 +114,7 @@
 							<input id="comment_send" type="submit" name="send" value="Отправить">
 						</form>
 						<?
-							$comment_text = 'uuuuuuuuu';
+
 						?>
 					</div>
 				</div>
