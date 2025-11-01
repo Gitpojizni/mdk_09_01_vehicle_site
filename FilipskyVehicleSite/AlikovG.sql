@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 14 2025 г., 07:47
--- Версия сервера: 5.7.39
--- Версия PHP: 8.1.9
+-- Время создания: Ноя 01 2025 г., 07:42
+-- Версия сервера: 8.0.30
+-- Версия PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -45,18 +45,45 @@ INSERT INTO `category` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `comment`
+--
+
+CREATE TABLE `comment` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `tovar_id` int NOT NULL,
+  `comment` varchar(1000) NOT NULL,
+  `login` varchar(100) NOT NULL,
+  `created_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `comment`
+--
+
+INSERT INTO `comment` (`id`, `user_id`, `tovar_id`, `comment`, `login`, `created_at`) VALUES
+(1, 228, 9, 'opo warrior top', 'warriorer', '2025-11-01'),
+(2, 123, 2, 'btr top, dorogo', 'current_user_login', '2025-11-01'),
+(3, 123, 2, 'btr top, dorogo', 'current_user_login', '2025-11-01'),
+(4, 123, 12, 'iphone max pro ryadom ne stoyal', 'current_user_login', '2025-11-01'),
+(5, 123, 11, 'tigr eto silno', 'current_user_login', '2025-11-01'),
+(6, 123, 13, 'ded na takoy gonyal', 'current_user_login', '2025-11-01');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `reg`
 --
 
 CREATE TABLE `reg` (
-  `id` int(11) NOT NULL,
-  `login` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `father_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mail` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` int(11) NOT NULL
+  `id` int NOT NULL,
+  `login` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `father_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -66,13 +93,13 @@ CREATE TABLE `reg` (
 --
 
 CREATE TABLE `tovar` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description_less` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description_full` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `img` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description_less` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description_full` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -107,6 +134,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `reg`
 --
 ALTER TABLE `reg`
@@ -126,19 +159,25 @@ ALTER TABLE `tovar`
 -- AUTO_INCREMENT для таблицы `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT для таблицы `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `reg`
 --
 ALTER TABLE `reg`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `tovar`
 --
 ALTER TABLE `tovar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

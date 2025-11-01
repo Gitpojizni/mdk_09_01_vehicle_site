@@ -90,7 +90,7 @@
 					<p><? echo $row[3]; ?></p>
 					<p>$<? echo $row[5]; ?></p>
 					<div>
-						<form action="tovar.php" method="post">
+						<form action="tovar.php" method="get">
 							<input type="hidden" name="id" value="<? echo $row[0]; ?>">
 							<input type="submit" name="tovar" value="Подробнее">
 						</form>
